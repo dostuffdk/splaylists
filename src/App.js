@@ -85,7 +85,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let accessToken = new URLSearchParams(window.location.search).get('access_token')
+    let accessToken = new URLSearchParams(window.location.search).get('access_token');
+    if (!accessToken) {
+      return;
+    }
 
     fetch('https://api.spotify.com/v1/me', {
       headers: {
